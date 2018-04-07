@@ -1,0 +1,38 @@
+<table class="table table-striped custab t-layout table-bordered">
+  <thead>
+    <tr jh-sort="vm.predicate" ascending="vm.reverse"
+      callback="vm.transition()">
+      <th class="text-center td-action-md">Thao Tác</th>
+      <th jh-sort-by="name" class="text-center th-width-max-lg"><span>Tiêu Đề</span> <span
+        class="glyphicon glyphicon-sort"></span></th>
+      <th jh-sort-by="phone" class="th-width-md text-center"><span>Nội Dung</span> <span
+        class="glyphicon glyphicon-sort"></span></th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="blog in vm.blogs track by blog.id">
+      <td class="text-center td-for-small">
+        <button type="submit"
+          ui-sref="blog.detail({id:blog.id})"
+          class="btn btn-warning btn-xs">
+          <span class="glyphicon glyphicon-eye-open"></span> <span
+            class="hidden-xs hidden-xs"></span>
+        </button>
+        <button type="submit"
+          ui-sref="blog.edit({id:blog.id})"
+          ui-sref-opts="{reload: false}" class="btn btn-primary btn-xs">
+          <span class="glyphicon glyphicon-edit"></span> <span
+              class="hidden-xs hidden-sm"></span>
+        </button>
+        <button type="submit"
+          ng-click="vm.deleteBlog(blog.id)"
+          class="btn btn-danger btn-xs">
+          <span class="glyphicon glyphicon-remove"></span> <span
+            class="hidden-xs hidden-sm"></span>
+        </button>
+      </td>
+      <td class="td-for-small">{{blog.title}}</td>
+      <td class="td-for-small">{{blog.content}}</p></td>
+    </tr>
+
+  </tbody>
+</table>

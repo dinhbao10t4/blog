@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<property name="now" value="now()" dbms="mysql,h2" />
+	<property name="now" value="current_timestamp" dbms="postgresql" />
+	<property name="now" value="sysdate" dbms="oracle" />
+
+	<property name="autoIncrement" value="true"
+		dbms="mysql,h2,postgresql,oracle" />
+
+	<property name="floatType" value="float4" dbms="postgresql, h2" />
+	<property name="floatType" value="float" dbms="mysql, oracle" />
+
+	<changeSet id="20171223102300-1" author="bt">
+		<sql>
+			CREATE SEQUENCE blog_id_seq
+		    START WITH 1
+		    INCREMENT BY 1
+		    NO MINVALUE
+		    NO MAXVALUE
+		    CACHE 1;
+		    
+		    CREATE TABLE blog (
+			    id bigint DEFAULT nextval('blog_id_seq'::regclass) NOT NULL,
+			    title text,
+			    content text,
+			    deleted boolean DEFAULT false,
+			    created_by character varying(50) NOT NULL,
+			    created_date timestamp without time zone DEFAULT now() NOT NULL,
+			    last_modified_by character varying(50),
+			    last_modified_date timestamp without time zone
+			);
+		</sql>
+	</changeSet>
+</databaseChangeLog>

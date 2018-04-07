@@ -1,0 +1,15 @@
+<div class="row">
+    <label class="col-md-2" for="">Tiêu Đề:</label>
+    <input type="text" ng-model="vm.blog.title">
+</div>
+<br/>
+<div class="row">
+    <label class="col-md-2" for="">Nội Dung:</label><textarea rows="4" cols="50" type="text" ng-model="vm.blog.content"></textarea><br/>
+</div>
+<br/>
+<button type="button" class="btn btn-success" ng-click="vm.save()">
+    <i class="fa fa-floppy-o"></i>Lưu
+  </button>
+<button type="button" class="btn btn-success" onclick="window.history.back()">
+  <i class="fa fa-floppy-o"></i>Trở Lại
+</button>
